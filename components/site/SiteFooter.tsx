@@ -133,7 +133,7 @@ export function SiteFooter() {
                   href="mailto:hello@revgeniq.com"
                   className="hover:text-[oklch(0.75_0.15_75)] transition-colors"
                 >
-                  hello@revgeniq.com
+                  hello@revgeniq.co.in
                 </a>
               </li>
               <li className="flex items-center gap-2.5">
