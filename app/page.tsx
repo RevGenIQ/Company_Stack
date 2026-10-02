@@ -45,10 +45,10 @@ import {
 const logos = ["Northwind", "Helix", "Ledgerline", "Quantra", "Orbitly", "Fieldstone", "Cobalt&Co", "Meridian"];
 
 const stats = [
-  { value: "$42M+", label: "Pipeline Created",    icon: CircleDollarSign },
-  { value: "3.4×",  label: "Avg Pipeline Lift",   icon: TrendingUp },
-  { value: "87%",   label: "Meeting Show-Up",      icon: CalendarCheck },
-  { value: "96%+",  label: "Email Deliverability", icon: ShieldCheck },
+  { value: "$42M+", label: "Pipeline Created", icon: CircleDollarSign },
+  { value: "3.4×", label: "Avg Pipeline Lift", icon: TrendingUp },
+  { value: "87%", label: "Meeting Show-Up", icon: CalendarCheck },
+  { value: "96%+", label: "Email Deliverability", icon: ShieldCheck },
 ];
 
 /* Fetch live data from Supabase, fall back to mock data */
@@ -72,18 +72,18 @@ async function getHomeData() {
     ]);
 
     return {
-      services:     services?.length     ? services     : INITIAL_SERVICES,
-      industries:   industries?.length   ? industries   : INITIAL_INDUSTRIES,
-      caseStudies:  caseStudies?.length  ? caseStudies  : INITIAL_CASE_STUDIES,
-      blogPosts:    blogPosts?.length    ? blogPosts    : INITIAL_BLOG_POSTS,
+      services: services?.length ? services : INITIAL_SERVICES,
+      industries: industries?.length ? industries : INITIAL_INDUSTRIES,
+      caseStudies: caseStudies?.length ? caseStudies : INITIAL_CASE_STUDIES,
+      blogPosts: blogPosts?.length ? blogPosts : INITIAL_BLOG_POSTS,
       testimonials: testimonials?.length ? testimonials : INITIAL_TESTIMONIALS,
     };
   } catch {
     return {
-      services:     INITIAL_SERVICES,
-      industries:   INITIAL_INDUSTRIES,
-      caseStudies:  INITIAL_CASE_STUDIES,
-      blogPosts:    INITIAL_BLOG_POSTS,
+      services: INITIAL_SERVICES,
+      industries: INITIAL_INDUSTRIES,
+      caseStudies: INITIAL_CASE_STUDIES,
+      blogPosts: INITIAL_BLOG_POSTS,
       testimonials: INITIAL_TESTIMONIALS,
     };
   }
@@ -126,13 +126,13 @@ export default async function HomePage() {
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-[3.6rem] font-extrabold text-foreground tracking-tight leading-[1.08] animate-fade-in-up animation-delay-100">
-                Build a Predictable<br className="hidden sm:inline" />
-                {" "}<span className="text-gradient">B2B Revenue Pipeline.</span>
+                TURN DATA<br className="hidden sm:inline" />
+                {" "}<span className="text-gradient">INTO REVENUE.</span>
               </h1>
 
               {/* What we do — visible in first screen */}
               <p className="text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed mx-auto lg:mx-0 animate-fade-in-up animation-delay-200">
-                RevGen IQ combines <strong className="text-foreground">B2B data intelligence</strong>, outbound prospecting, cold calling and appointment setting to build predictable sales pipelines for fast-growth B2B companies. We take your ideal customer profile and fill your calendar with qualified meetings — without the hiring overhead.
+                We identify the right prospects, create conversations and help your sales team convert opportunities into revenue.
               </p>
 
               {/* Primary & Secondary CTAs */}
