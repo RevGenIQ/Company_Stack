@@ -3,8 +3,11 @@
 import Link from "next/link";
 import { MetricCard } from "@/components/admin/MetricCard";
 import { StatusBadge } from "@/components/admin/StatusBadge";
-import { formatDate } from "@/lib/utils";
-import { ArrowRight, FileText, Briefcase, MessageSquare } from "lucide-react";
+import { ArrowRight, FileText, Briefcase, MessageSquare, Users, UserPlus, CheckCircle2, CalendarCheck2, Trophy, TrendingUp } from "lucide-react";
+
+const ICON_MAP: Record<string, any> = {
+  Users, UserPlus, CheckCircle2, CalendarCheck2, Trophy, TrendingUp
+};
 import {
   ResponsiveContainer,
   BarChart,
@@ -16,11 +19,11 @@ import {
 } from "recharts";
 
 interface Props {
-  metrics:      { title: string; value: number | string; change: string; icon: any; subtext: string }[];
+  metrics: { title: string; value: number | string; change: string; icon: any; subtext: string }[];
   pipelineData: { status: string; count: number }[];
-  recentLeads:  any[];
-  blogPosts:    any[];
-  caseStudies:  any[];
+  recentLeads: any[];
+  blogPosts: any[];
+  caseStudies: any[];
   testimonials: any[];
 }
 
@@ -45,7 +48,7 @@ export function AdminDashboardClient({ metrics, pipelineData, recentLeads, blogP
       {/* Metrics Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
         {metrics.map((m) => (
-          <MetricCard key={m.title} title={m.title} value={m.value} change={m.change} icon={m.icon} subtext={m.subtext} />
+          <MetricCard key={m.title} title={m.title} value={m.value} change={m.change} icon={ICON_MAP[m.icon as string] || Users} subtext={m.subtext} />
         ))}
       </div>
 

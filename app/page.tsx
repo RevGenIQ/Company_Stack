@@ -8,6 +8,7 @@ import { ServiceCard } from "@/components/site/ServiceCard";
 import { CaseStudyCard } from "@/components/site/CaseStudyCard";
 import { BlogCard } from "@/components/site/BlogCard";
 import { ProblemSelector } from "@/components/site/ProblemSelector";
+
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import {
   INITIAL_SERVICES,

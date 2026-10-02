@@ -205,7 +205,37 @@ export function LeadForm({
             />
           </div>
         </div>
+        {/* Contact details */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <Label required>
+              Phone Number
+            </Label>
 
+            <Input
+              type="tel"
+              className={inputClass}
+              placeholder="Enter Phone Number"
+              {...register("phone")}
+            />
+          </div>
+
+          <div>
+            <Label>
+              Company Website{" "}
+              <span className="text-muted-foreground/60 font-normal">
+                (optional)
+              </span>
+            </Label>
+
+            <Input
+              type="text"
+              className={inputClass}
+              placeholder="https://company.com"
+              {...register("website")}
+            />
+          </div>
+        </div>
         {/* Row 3: Service + Target Market */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>

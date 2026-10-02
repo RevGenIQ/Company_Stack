@@ -1,17 +1,6 @@
-import Link from "next/link";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { AdminDashboardClient } from "@/components/admin/AdminDashboardClient";
 import {
-  Users,
-  UserPlus,
-  CheckCircle2,
-  CalendarCheck2,
-  Trophy,
-  TrendingUp,
-  FileText,
-  Briefcase,
-  MessageSquare,
-  ArrowRight,
 } from "lucide-react";
 
 export default async function AdminDashboardPage() {
@@ -29,35 +18,35 @@ export default async function AdminDashboardPage() {
       supabase.from("case_studies").select("id,client,industry,title,metrics,status").order("created_at", { ascending: false }),
       supabase.from("testimonials").select("*").order("created_at", { ascending: false }),
     ]);
-    leads      = leadsRes.data      || [];
-    blogPosts  = postsRes.data      || [];
-    caseStudies  = csRes.data       || [];
-    testimonials = testimRes.data   || [];
+    leads = leadsRes.data || [];
+    blogPosts = postsRes.data || [];
+    caseStudies = csRes.data || [];
+    testimonials = testimRes.data || [];
   }
 
-  const totalLeads      = leads.length;
-  const newLeads        = leads.filter((l) => l.status === "NEW").length;
-  const qualifiedLeads  = leads.filter((l) => l.status === "QUALIFIED").length;
-  const meetingsBooked  = leads.filter((l) => l.status === "MEETING_BOOKED").length;
-  const wonLeads        = leads.filter((l) => l.status === "WON").length;
-  const conversionRate  = totalLeads > 0 ? Math.round(((qualifiedLeads + meetingsBooked + wonLeads) / totalLeads) * 100) : 0;
+  const totalLeads = leads.length;
+  const newLeads = leads.filter((l) => l.status === "NEW").length;
+  const qualifiedLeads = leads.filter((l) => l.status === "QUALIFIED").length;
+  const meetingsBooked = leads.filter((l) => l.status === "MEETING_BOOKED").length;
+  const wonLeads = leads.filter((l) => l.status === "WON").length;
+  const conversionRate = totalLeads > 0 ? Math.round(((qualifiedLeads + meetingsBooked + wonLeads) / totalLeads) * 100) : 0;
 
   const metrics = [
-    { title: "Total Leads",      value: totalLeads,        change: "+12%",     icon: Users,         subtext: "All-time captured"     },
-    { title: "New Leads",        value: newLeads,          change: "+4 new",   icon: UserPlus,      subtext: "Action required"        },
-    { title: "Qualified",        value: qualifiedLeads,    change: "+25%",     icon: CheckCircle2,  subtext: "ICP validated"          },
-    { title: "Meetings Booked",  value: meetingsBooked,    change: "88% show", icon: CalendarCheck2,subtext: "Scheduled on AEs"        },
-    { title: "Deals Won",        value: wonLeads,          change: "$140k ARR",icon: Trophy,        subtext: "Closed opportunity"     },
-    { title: "Conversion Rate",  value: `${conversionRate}%`, change: "+4.2%", icon: TrendingUp,    subtext: "Lead-to-Meeting"        },
+    { title: "Total Leads", value: totalLeads, change: "+12%", icon: "Users", subtext: "All-time captured" },
+    { title: "New Leads", value: newLeads, change: "+4 new", icon: "UserPlus", subtext: "Action required" },
+    { title: "Qualified", value: qualifiedLeads, change: "+25%", icon: "CheckCircle2", subtext: "ICP validated" },
+    { title: "Meetings Booked", value: meetingsBooked, change: "88% show", icon: "CalendarCheck2", subtext: "Scheduled on AEs" },
+    { title: "Deals Won", value: wonLeads, change: "$140k ARR", icon: "Trophy", subtext: "Closed opportunity" },
+    { title: "Conversion Rate", value: `${conversionRate}%`, change: "+4.2%", icon: "TrendingUp", subtext: "Lead-to-Meeting" },
   ];
 
   const pipelineData = [
-    { status: "NEW",       count: newLeads },
+    { status: "NEW", count: newLeads },
     { status: "CONTACTED", count: leads.filter((l) => l.status === "CONTACTED").length },
     { status: "QUALIFIED", count: qualifiedLeads },
-    { status: "MEETING",   count: meetingsBooked },
-    { status: "PROPOSAL",  count: leads.filter((l) => l.status === "PROPOSAL").length },
-    { status: "WON",       count: wonLeads },
+    { status: "MEETING", count: meetingsBooked },
+    { status: "PROPOSAL", count: leads.filter((l) => l.status === "PROPOSAL").length },
+    { status: "WON", count: wonLeads },
   ];
 
   return (
