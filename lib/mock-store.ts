@@ -64,17 +64,17 @@ export const INITIAL_SERVICES: ServiceItem[] = [
   {
     id: "serv-5",
     slug: "data-enrichment",
-    name: "Data & List Building",
-    short_description: "Clean, enriched, verified prospect lists your team can actually trust.",
-    summary: "Custom research and enrichment for target accounts — firmographics, technographics, intent signals and verified contacts.",
-    outcomes: ["Custom account research", "Email & phone verification", "CRM cleanup", "Intent & trigger signals"],
+    name: "B2B Data Extraction & Intelligence",
+    short_description: "Identify, extract, enrich and validate the business data your sales team needs to reach the right companies and decision-makers.",
+    summary: "We build precise, verified prospect intelligence covering company firmographics, decision-maker contacts, technology stacks, buying signals and market research — so your team reaches the right people with the right message.",
+    outcomes: ["Decision-maker contact data", "Company & technographic intelligence", "Intent signal monitoring", "CRM data cleanup & enrichment", "Market & account research"],
     process: [
-      { title: "Scope", body: "Define filters, signals and required fields." },
-      { title: "Research", body: "Blend databases with manual research." },
-      { title: "Verify", body: "Multi-step validation of every contact." },
-      { title: "Sync", body: "Push clean records into your CRM." },
+      { title: "Scope", body: "Define your ICP filters, target verticals and required data fields." },
+      { title: "Extract", body: "Blend premium databases with manual research for precise targeting." },
+      { title: "Verify", body: "Multi-step human and automated validation of every contact." },
+      { title: "Sync", body: "Push clean, enriched records directly into your CRM." },
     ],
-    metric: { value: "96%", label: "email deliverability" },
+    metric: { value: "96%", label: "email deliverability guaranteed" },
   },
   {
     id: "serv-6",
@@ -105,6 +105,21 @@ export const INITIAL_SERVICES: ServiceItem[] = [
       { title: "Transfer", body: "Optional handover to your in-house team." },
     ],
     metric: { value: "$42M", label: "pipeline generated for clients" },
+  },
+  {
+    id: "serv-8",
+    slug: "sales-consulting",
+    name: "Sales Consulting",
+    short_description: "From 'we need more leads' to 'we need a better sales engine.' Strategic advisory for revenue-focused leadership teams.",
+    summary: "We help businesses assess their go-to-market strategy, improve sales processes and build a more structured approach to revenue generation. Not just more outreach — a better sales engine.",
+    outcomes: ["Go-to-market (GTM) strategy", "Ideal Customer Profile (ICP) definition", "Sales process design", "Outbound strategy & playbooks", "CRM & pipeline architecture", "Sales team structure & hiring plan", "Lead qualification framework", "Revenue strategy & forecasting"],
+    process: [
+      { title: "Audit", body: "Assess current sales motion, ICP clarity, CRM hygiene and pipeline health." },
+      { title: "Diagnose", body: "Identify the root causes of revenue leakage and pipeline gaps." },
+      { title: "Design", body: "Build a structured GTM strategy, outbound playbook and qualification framework." },
+      { title: "Enable", body: "Implement, train and optimise the new sales engine with your team." },
+    ],
+    metric: { value: "3.4×", label: "avg. pipeline lift after GTM realignment" },
   }
 ];
 

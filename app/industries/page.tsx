@@ -27,20 +27,20 @@ export default function IndustriesPage() {
               <Link
                 key={ind.id}
                 href={`/industries/${ind.slug}`}
-                className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/50 transition-all space-y-4 group glass-panel-hover"
+                className="p-8 rounded-2xl bg-card/60 border border-border hover:border-amber-500/50 transition-all space-y-4 group glass-panel-hover"
               >
                 <div className="flex items-center justify-between">
-                  <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                  <h3 className="text-2xl font-bold text-foreground group-hover:text-amber-400 transition-colors">
                     {ind.name}
                   </h3>
-                  <ChevronRight className="w-5 h-5 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all" />
+                  <ChevronRight className="w-5 h-5 text-muted-foreground/60 group-hover:text-amber-400 group-hover:translate-x-1 transition-all" />
                 </div>
-                <p className="text-slate-400 text-sm leading-relaxed">{ind.blurb}</p>
+                <p className="text-muted-foreground/80 text-sm leading-relaxed">{ind.blurb}</p>
                 <div className="pt-2">
-                  <span className="text-xs font-semibold text-slate-300 block mb-2">Primary Sales Challenges Solved:</span>
+                  <span className="text-xs font-semibold text-muted-foreground block mb-2">Primary Sales Challenges Solved:</span>
                   <div className="flex flex-wrap gap-2">
                     {ind.challenges.map((c, i) => (
-                      <span key={i} className="text-xs px-2.5 py-1 rounded-md bg-slate-950 text-cyan-400 border border-slate-800">
+                      <span key={i} className="text-xs px-2.5 py-1 rounded-md bg-background text-amber-400 border border-border">
                         {c}
                       </span>
                     ))}

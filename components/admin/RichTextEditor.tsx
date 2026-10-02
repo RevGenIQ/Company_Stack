@@ -9,7 +9,6 @@ import {
   Bold,
   Italic,
   Strikethrough,
-  Code,
   Heading1,
   Heading2,
   Heading3,
@@ -48,7 +47,7 @@ export function RichTextEditor({
 
   if (!editor) {
     return (
-      <div className="min-h-[250px] w-full rounded-md border border-slate-800 bg-slate-950 p-4 text-slate-500 text-sm flex items-center justify-center">
+      <div className="min-h-[250px] w-full rounded-md border border-border bg-background p-4 text-muted-foreground/60 text-sm flex items-center justify-center">
         Loading TipTap Editor...
       </div>
     );
@@ -75,13 +74,13 @@ export function RichTextEditor({
   };
 
   return (
-    <div className="rounded-xl border border-slate-800 bg-slate-950 overflow-hidden">
+    <div className="rounded-xl border border-border bg-background overflow-hidden">
       {/* Formatting Toolbar */}
-      <div className="flex flex-wrap items-center gap-1 p-2 bg-slate-900 border-b border-slate-800">
+      <div className="flex flex-wrap items-center gap-1 p-2 bg-card border-b border-border">
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleBold().run()}
-          className={`p-1.5 rounded hover:bg-slate-800 text-slate-300 ${editor.isActive("bold") ? "bg-slate-800 text-cyan-400" : ""}`}
+          className={`p-1.5 rounded hover:bg-secondary text-muted-foreground ${editor.isActive("bold") ? "bg-secondary text-amber-400" : ""}`}
           title="Bold"
         >
           <Bold className="w-4 h-4" />
@@ -90,7 +89,7 @@ export function RichTextEditor({
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleItalic().run()}
-          className={`p-1.5 rounded hover:bg-slate-800 text-slate-300 ${editor.isActive("italic") ? "bg-slate-800 text-cyan-400" : ""}`}
+          className={`p-1.5 rounded hover:bg-secondary text-muted-foreground ${editor.isActive("italic") ? "bg-secondary text-amber-400" : ""}`}
           title="Italic"
         >
           <Italic className="w-4 h-4" />
@@ -99,18 +98,18 @@ export function RichTextEditor({
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleStrike().run()}
-          className={`p-1.5 rounded hover:bg-slate-800 text-slate-300 ${editor.isActive("strike") ? "bg-slate-800 text-cyan-400" : ""}`}
+          className={`p-1.5 rounded hover:bg-secondary text-muted-foreground ${editor.isActive("strike") ? "bg-secondary text-amber-400" : ""}`}
           title="Strikethrough"
         >
           <Strikethrough className="w-4 h-4" />
         </button>
 
-        <span className="w-px h-5 bg-slate-800 mx-1" />
+        <span className="w-px h-5 bg-secondary mx-1" />
 
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-          className={`p-1.5 rounded hover:bg-slate-800 text-slate-300 ${editor.isActive("heading", { level: 1 }) ? "bg-slate-800 text-cyan-400" : ""}`}
+          className={`p-1.5 rounded hover:bg-secondary text-muted-foreground ${editor.isActive("heading", { level: 1 }) ? "bg-secondary text-amber-400" : ""}`}
           title="H1"
         >
           <Heading1 className="w-4 h-4" />
@@ -119,7 +118,7 @@ export function RichTextEditor({
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-          className={`p-1.5 rounded hover:bg-slate-800 text-slate-300 ${editor.isActive("heading", { level: 2 }) ? "bg-slate-800 text-cyan-400" : ""}`}
+          className={`p-1.5 rounded hover:bg-secondary text-muted-foreground ${editor.isActive("heading", { level: 2 }) ? "bg-secondary text-amber-400" : ""}`}
           title="H2"
         >
           <Heading2 className="w-4 h-4" />
@@ -128,18 +127,18 @@ export function RichTextEditor({
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-          className={`p-1.5 rounded hover:bg-slate-800 text-slate-300 ${editor.isActive("heading", { level: 3 }) ? "bg-slate-800 text-cyan-400" : ""}`}
+          className={`p-1.5 rounded hover:bg-secondary text-muted-foreground ${editor.isActive("heading", { level: 3 }) ? "bg-secondary text-amber-400" : ""}`}
           title="H3"
         >
           <Heading3 className="w-4 h-4" />
         </button>
 
-        <span className="w-px h-5 bg-slate-800 mx-1" />
+        <span className="w-px h-5 bg-secondary mx-1" />
 
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleBulletList().run()}
-          className={`p-1.5 rounded hover:bg-slate-800 text-slate-300 ${editor.isActive("bulletList") ? "bg-slate-800 text-cyan-400" : ""}`}
+          className={`p-1.5 rounded hover:bg-secondary text-muted-foreground ${editor.isActive("bulletList") ? "bg-secondary text-amber-400" : ""}`}
           title="Bullet List"
         >
           <List className="w-4 h-4" />
@@ -148,7 +147,7 @@ export function RichTextEditor({
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
-          className={`p-1.5 rounded hover:bg-slate-800 text-slate-300 ${editor.isActive("orderedList") ? "bg-slate-800 text-cyan-400" : ""}`}
+          className={`p-1.5 rounded hover:bg-secondary text-muted-foreground ${editor.isActive("orderedList") ? "bg-secondary text-amber-400" : ""}`}
           title="Ordered List"
         >
           <ListOrdered className="w-4 h-4" />
@@ -157,18 +156,18 @@ export function RichTextEditor({
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
-          className={`p-1.5 rounded hover:bg-slate-800 text-slate-300 ${editor.isActive("blockquote") ? "bg-slate-800 text-cyan-400" : ""}`}
+          className={`p-1.5 rounded hover:bg-secondary text-muted-foreground ${editor.isActive("blockquote") ? "bg-secondary text-amber-400" : ""}`}
           title="Blockquote"
         >
           <Quote className="w-4 h-4" />
         </button>
 
-        <span className="w-px h-5 bg-slate-800 mx-1" />
+        <span className="w-px h-5 bg-secondary mx-1" />
 
         <button
           type="button"
           onClick={setLink}
-          className={`p-1.5 rounded hover:bg-slate-800 text-slate-300 ${editor.isActive("link") ? "bg-slate-800 text-cyan-400" : ""}`}
+          className={`p-1.5 rounded hover:bg-secondary text-muted-foreground ${editor.isActive("link") ? "bg-secondary text-amber-400" : ""}`}
           title="Insert Link"
         >
           <LinkIcon className="w-4 h-4" />
@@ -177,18 +176,18 @@ export function RichTextEditor({
         <button
           type="button"
           onClick={addImage}
-          className="p-1.5 rounded hover:bg-slate-800 text-slate-300"
+          className="p-1.5 rounded hover:bg-secondary text-muted-foreground"
           title="Insert Image URL"
         >
           <ImageIcon className="w-4 h-4" />
         </button>
 
-        <span className="w-px h-5 bg-slate-800 mx-1" />
+        <span className="w-px h-5 bg-secondary mx-1" />
 
         <button
           type="button"
           onClick={() => editor.chain().focus().undo().run()}
-          className="p-1.5 rounded hover:bg-slate-800 text-slate-300"
+          className="p-1.5 rounded hover:bg-secondary text-muted-foreground"
           title="Undo"
         >
           <Undo className="w-4 h-4" />
@@ -197,7 +196,7 @@ export function RichTextEditor({
         <button
           type="button"
           onClick={() => editor.chain().focus().redo().run()}
-          className="p-1.5 rounded hover:bg-slate-800 text-slate-300"
+          className="p-1.5 rounded hover:bg-secondary text-muted-foreground"
           title="Redo"
         >
           <Redo className="w-4 h-4" />

@@ -17,10 +17,10 @@ const buttonVariants = cva(
           "bg-gradient-to-r from-[oklch(0.82_0.13_78)] to-[oklch(0.68_0.15_72)] text-[oklch(0.11_0.028_252)] shadow hover:from-[oklch(0.88_0.12_80)] hover:to-[oklch(0.72_0.16_74)] border border-[oklch(0.75_0.15_75/0.25)]",
         /** Destructive / danger */
         destructive:
-          "bg-rose-600 text-white shadow-sm hover:bg-rose-500",
+          "bg-rose-600 text-foreground shadow-sm hover:bg-rose-500",
         /** Navy outline with gold hover */
         outline:
-          "border border-[oklch(0.22_0.025_252)] bg-[oklch(0.16_0.028_252/0.5)] text-[oklch(0.96_0.008_90)] shadow-sm hover:bg-[oklch(0.20_0.028_252)] hover:text-white hover:border-[oklch(0.75_0.15_75/0.4)]",
+          "border border-[oklch(0.22_0.025_252)] bg-[oklch(0.16_0.028_252/0.5)] text-[oklch(0.96_0.008_90)] shadow-sm hover:bg-[oklch(0.20_0.028_252)] hover:text-foreground hover:border-[oklch(0.75_0.15_75/0.4)]",
         /** Muted secondary */
         secondary:
           "bg-[oklch(0.20_0.028_252)] text-[oklch(0.96_0.008_90)] shadow-sm hover:bg-[oklch(0.24_0.025_252)]",

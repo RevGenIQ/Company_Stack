@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" fill="none">
+  <!-- Dark mark for light theme -->
+  <rect x="0" y="8" width="24" height="24" rx="6" fill="#0f2a4e"/>
+  <path d="M6 20 L10 14 L14 20 L18 14" stroke="#d4a843" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="18" cy="20" r="2" fill="#d4a843"/>
+  <text x="30" y="26" font-family="Outfit, Inter, system-ui, sans-serif" font-size="15" font-weight="700" fill="#0f2a4e" letter-spacing="-0.3">RevGen</text>
+  <text x="97" y="26" font-family="Outfit, Inter, system-ui, sans-serif" font-size="15" font-weight="300" fill="#0f2a4e" letter-spacing="-0.2"> IQ</text>
+</svg>

@@ -44,8 +44,8 @@ export default function AdminLoginPage() {
       <div className="w-full max-w-md p-8 rounded-3xl backdrop-blur-xl shadow-2xl space-y-6 border" style={{ background: "oklch(0.15 0.028 252 / 0.90)", borderColor: "oklch(0.22 0.025 252)" }}>
         <div className="text-center space-y-2">
           <Logo className="justify-center" />
-          <h2 className="text-xl font-bold text-white pt-2">Internal CMS Portal</h2>
-          <p className="text-xs text-slate-400">Sign in to manage lead pipelines, articles & case studies</p>
+          <h2 className="text-xl font-bold text-foreground pt-2">Internal CMS Portal</h2>
+          <p className="text-xs text-muted-foreground/80">Sign in to manage lead pipelines, articles & case studies</p>
         </div>
 
         {errorMsg && (
@@ -56,7 +56,7 @@ export default function AdminLoginPage() {
 
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1">Admin Email</label>
+            <label className="block text-xs font-semibold text-muted-foreground mb-1">Admin Email</label>
             <Input
               type="email"
               placeholder="admin@revgeniq.com"
@@ -67,7 +67,7 @@ export default function AdminLoginPage() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1">Password</label>
+            <label className="block text-xs font-semibold text-muted-foreground mb-1">Password</label>
             <Input
               type="password"
               placeholder="••••••••"
@@ -82,7 +82,7 @@ export default function AdminLoginPage() {
             <ArrowRight className="w-4 h-4" />
           </Button>
 
-          <p className="text-[11px] text-center text-slate-500 pt-2">
+          <p className="text-[11px] text-center text-muted-foreground/60 pt-2">
             Protected by Supabase Row Level Security & RBAC
           </p>
         </form>

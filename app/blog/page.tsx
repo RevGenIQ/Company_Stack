@@ -41,30 +41,30 @@ export default function BlogPage() {
 
           {/* Featured Article Banner */}
           {featuredPost && (
-            <div className="mb-16 rounded-3xl border border-slate-800 bg-slate-900/80 backdrop-blur-xl overflow-hidden shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-6 sm:p-8">
+            <div className="mb-16 rounded-3xl border border-border bg-card/80 backdrop-blur-xl overflow-hidden shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-6 sm:p-8">
               <div className="lg:col-span-7 space-y-4">
                 <div className="flex items-center gap-3">
-                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
+                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/40">
                     Featured Article
                   </span>
-                  <span className="text-xs text-slate-400 flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5 text-cyan-400" />
+                  <span className="text-xs text-muted-foreground/80 flex items-center gap-1">
+                    <Clock className="w-3.5 h-3.5 text-amber-400" />
                     {featuredPost.reading_time_minutes} min read
                   </span>
                 </div>
 
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
-                  <Link href={`/blog/${featuredPost.slug}`} className="hover:text-cyan-400 transition-colors">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground leading-tight">
+                  <Link href={`/blog/${featuredPost.slug}`} className="hover:text-amber-400 transition-colors">
                     {featuredPost.title}
                   </Link>
                 </h2>
 
-                <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
                   {featuredPost.excerpt}
                 </p>
 
                 <div className="pt-2 flex items-center justify-between">
-                  <span className="text-xs text-slate-400 font-medium">
+                  <span className="text-xs text-muted-foreground/80 font-medium">
                     Published {formatDate(featuredPost.published_at)} by {featuredPost.author_name}
                   </span>
 
@@ -86,7 +86,7 @@ export default function BlogPage() {
                   />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-blue-900 to-slate-950 flex items-center justify-center p-6 text-center">
-                    <Sparkles className="w-12 h-12 text-cyan-400" />
+                    <Sparkles className="w-12 h-12 text-amber-400" />
                   </div>
                 )}
               </div>
@@ -94,18 +94,17 @@ export default function BlogPage() {
           )}
 
           {/* Search & Category Filter Bar */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-10 p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-10 p-4 rounded-2xl bg-card/60 border border-border">
             {/* Category Pills */}
             <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold capitalize transition-all ${
-                    selectedCategory.toLowerCase() === cat.toLowerCase()
-                      ? "bg-cyan-500 text-slate-950 shadow-md"
-                      : "bg-slate-950 text-slate-400 border border-slate-800 hover:text-white"
-                  }`}
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold capitalize transition-all ${selectedCategory.toLowerCase() === cat.toLowerCase()
+                    ? "bg-amber-500 text-slate-950 shadow-md"
+                    : "bg-background text-muted-foreground/80 border border-border hover:text-foreground"
+                    }`}
                 >
                   {cat}
                 </button>
@@ -114,12 +113,12 @@ export default function BlogPage() {
 
             {/* Search Input */}
             <div className="relative w-full md:w-72">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+              <Search className="w-4 h-4 text-muted-foreground/80 absolute left-3 top-3" />
               <Input
                 placeholder="Search articles..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-9 bg-slate-950/80 border-slate-800 text-xs"
+                className="pl-9 bg-background/80 border-border text-xs"
               />
             </div>
           </div>
@@ -132,7 +131,7 @@ export default function BlogPage() {
               ))}
             </div>
           ) : (
-            <div className="py-16 text-center text-slate-400 border border-slate-800 rounded-2xl bg-slate-900/40">
+            <div className="py-16 text-center text-muted-foreground/80 border border-border rounded-2xl bg-card/40">
               <p>No articles found matching your criteria.</p>
             </div>
           )}

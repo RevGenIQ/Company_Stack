@@ -7,20 +7,23 @@ import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { ArrowRight, CheckCircle2, Loader2, Sparkles } from "lucide-react";
+import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 
 const leadSchema = z.object({
-  fullName: z.string().min(2, "Full name is required"),
-  company: z.string().min(2, "Company name is required"),
-  businessEmail: z.string().email("Valid business email is required"),
-  phone: z.string().optional(),
-  website: z.string().optional(),
-  serviceInterest: z.string().min(1, "Please select a service interest"),
-  companySize: z.string().optional(),
-  message: z.string().optional(),
-  consent: z.boolean().refine((val) => val === true, "Consent is required"),
-  // Honeypot anti-spam
-  hpField: z.string().optional(),
+  fullName:          z.string().min(2, "Please enter your full name"),
+  company:           z.string().min(2, "Please enter your company name"),
+  businessEmail:     z.string().email("Please enter a valid business email address"),
+  jobTitle:          z.string().optional(),
+  phone:             z.string().optional(),
+  website:           z.string().optional(),
+  serviceInterest:   z.string().min(1, "Please select the service most relevant to your needs"),
+  targetMarket:      z.string().optional(),
+  monthlyOutreach:   z.string().optional(),
+  companySize:       z.string().optional(),
+  message:           z.string().optional(),
+  consent:           z.boolean().refine((val) => val === true, "Your consent is required to proceed"),
+  // Anti-spam honeypot
+  hpField:           z.string().optional(),
 });
 
 type LeadFormData = z.infer<typeof leadSchema>;
@@ -35,7 +38,7 @@ interface LeadFormProps {
 export function LeadForm({
   defaultService = "b2b-lead-generation",
   className = "",
-  title = "Accelerate Your Revenue Pipeline",
+  title = "Build Your Revenue Pipeline",
   subtitle = "Speak with our growth strategists to see how RevGen IQ can deliver verified, sales-ready meetings for your team.",
 }: LeadFormProps) {
   const [submitted, setSubmitted] = useState(false);
@@ -57,14 +60,14 @@ export function LeadForm({
     if (typeof window !== "undefined") {
       const urlParams = new URLSearchParams(window.location.search);
       setAttribution({
-        utm_source: urlParams.get("utm_source") || "",
-        utm_medium: urlParams.get("utm_medium") || "",
+        utm_source:   urlParams.get("utm_source") || "",
+        utm_medium:   urlParams.get("utm_medium") || "",
         utm_campaign: urlParams.get("utm_campaign") || "",
-        utm_term: urlParams.get("utm_term") || "",
-        utm_content: urlParams.get("utm_content") || "",
+        utm_term:     urlParams.get("utm_term") || "",
+        utm_content:  urlParams.get("utm_content") || "",
         landing_page: window.location.pathname,
-        referrer: document.referrer || "",
-        page_url: window.location.href,
+        referrer:     document.referrer || "",
+        page_url:     window.location.href,
       });
     }
   }, []);
@@ -78,15 +81,14 @@ export function LeadForm({
     resolver: zodResolver(leadSchema),
     defaultValues: {
       serviceInterest: defaultService,
-      consent: true,
+      consent: false,
       hpField: "",
     },
   });
 
   const onSubmit = async (data: LeadFormData) => {
-    // Spam check
+    // Honeypot spam check
     if (data.hpField && data.hpField.length > 0) {
-      console.warn("Spam honeypot triggered");
       setSubmitted(true);
       return;
     }
@@ -95,28 +97,22 @@ export function LeadForm({
     setErrorMessage(null);
 
     try {
-      const payload = {
-        ...data,
-        ...attribution,
-      };
-
-      const res = await fetch("/api/lead", {
-        method: "POST",
+      const payload = { ...data, ...attribution };
+      const res  = await fetch("/api/lead", {
+        method:  "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body:    JSON.stringify(payload),
       });
-
       const json = await res.json();
 
       if (!res.ok || !json.success) {
-        throw new Error(json.error || "Failed to submit lead request");
+        throw new Error(json.error || "Failed to submit your request. Please try again.");
       }
 
       setSubmitted(true);
       reset();
     } catch (err: any) {
-      console.error("Submission error:", err);
-      setErrorMessage(err.message || "An unexpected error occurred. Please try again.");
+      setErrorMessage(err.message || "An unexpected error occurred. Please try again or contact us directly.");
     } finally {
       setLoading(false);
     }
@@ -124,27 +120,36 @@ export function LeadForm({
 
   if (submitted) {
     return (
-      <div className={`p-8 rounded-2xl border border-cyan-500/30 bg-slate-900/90 text-center space-y-4 backdrop-blur-xl shadow-2xl ${className}`}>
-        <div className="w-14 h-14 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center mx-auto border border-cyan-500/40 animate-bounce">
+      <div className={`p-8 rounded-2xl border border-emerald-500/30 bg-card/90 text-center space-y-4 backdrop-blur-xl shadow-2xl ${className}`}>
+        <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/40">
           <CheckCircle2 className="w-8 h-8" />
         </div>
-        <h3 className="text-2xl font-bold text-white">Strategy Call Requested!</h3>
-        <p className="text-slate-300 text-sm max-w-md mx-auto leading-relaxed">
-          Thank you. Our B2B pipeline architects are reviewing your details. We will reach out within 4 business hours with an outbound market audit and available times.
+        <h3 className="text-2xl font-bold text-foreground">Thank you — we&apos;ll be in touch.</h3>
+        <p className="text-muted-foreground text-sm max-w-md mx-auto leading-relaxed">
+          Our team reviews every submission within one business day. We&apos;ll reach out to discuss your pipeline goals and outline a tailored approach.
         </p>
         <Button variant="outline" onClick={() => setSubmitted(false)} className="mt-4">
-          Submit Another Inquiry
+          Submit Another Enquiry
         </Button>
       </div>
     );
   }
 
-  return (
-    <div className={`p-6 sm:p-8 rounded-2xl border border-slate-800 bg-slate-900/80 backdrop-blur-xl shadow-2xl space-y-6 ${className}`}>
-      <div>
+  /* Label helper */
+  const Label = ({ children, required }: { children: React.ReactNode; required?: boolean }) => (
+    <label className="block text-xs font-semibold text-muted-foreground mb-1.5">
+      {children} {required && <span className="text-rose-400">*</span>}
+    </label>
+  );
 
-        <h3 className="text-2xl font-extrabold text-white">{title}</h3>
-        <p className="text-slate-400 text-sm mt-1">{subtitle}</p>
+  const inputClass = "flex h-10 w-full rounded-md border border-border bg-background/70 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-500/60 focus-visible:border-amber-500/40 transition-colors";
+  const errClass   = "text-xs text-rose-400 mt-1 block";
+
+  return (
+    <div className={`p-6 sm:p-8 rounded-2xl border border-border bg-card/80 backdrop-blur-xl shadow-2xl space-y-6 ${className}`}>
+      <div>
+        <h3 className="text-2xl font-extrabold text-foreground">{title}</h3>
+        <p className="text-muted-foreground/80 text-sm mt-1 leading-relaxed">{subtitle}</p>
       </div>
 
       {errorMessage && (
@@ -153,110 +158,159 @@ export function LeadForm({
         </div>
       )}
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
         {/* Anti-spam hidden field */}
-        <input type="text" {...register("hpField")} className="hidden" tabIndex={-1} autoComplete="off" />
+        <input type="text" {...register("hpField")} className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
+        {/* Row 1: Name + Company */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1">Full Name *</label>
-            <Input placeholder="Jane Doe" {...register("fullName")} />
-            {errors.fullName && <span className="text-xs text-rose-400 mt-1 block">{errors.fullName.message}</span>}
+            <Label required>Full Name</Label>
+            <Input
+              className={inputClass}
+              placeholder="e.g. Alex Thompson"
+              {...register("fullName")}
+            />
+            {errors.fullName && <span className={errClass}>{errors.fullName.message}</span>}
           </div>
-
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1">Company Name *</label>
-            <Input placeholder="Acme Inc." {...register("company")} />
-            {errors.company && <span className="text-xs text-rose-400 mt-1 block">{errors.company.message}</span>}
+            <Label required>Company Name</Label>
+            <Input
+              className={inputClass}
+              placeholder="e.g. Meridian Software Ltd"
+              {...register("company")}
+            />
+            {errors.company && <span className={errClass}>{errors.company.message}</span>}
           </div>
         </div>
 
+        {/* Row 2: Email + Job Title */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1">Business Email *</label>
-            <Input type="email" placeholder="jane@acme.com" {...register("businessEmail")} />
-            {errors.businessEmail && <span className="text-xs text-rose-400 mt-1 block">{errors.businessEmail.message}</span>}
+            <Label required>Business Email</Label>
+            <Input
+              type="email"
+              className={inputClass}
+              placeholder="e.g. alex@meridian.com"
+              {...register("businessEmail")}
+            />
+            {errors.businessEmail && <span className={errClass}>{errors.businessEmail.message}</span>}
           </div>
-
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1">Phone Number</label>
-            <Input type="tel" placeholder="+1 (555) 000-0000" {...register("phone")} />
+            <Label>Job Title <span className="text-muted-foreground/60 font-normal">(optional)</span></Label>
+            <Input
+              className={inputClass}
+              placeholder="e.g. VP of Sales"
+              {...register("jobTitle")}
+            />
           </div>
         </div>
 
+        {/* Row 3: Service + Target Market */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1">Service Interest *</label>
+            <Label required>Service Required</Label>
             <select
               {...register("serviceInterest")}
-              className="flex h-10 w-full rounded-md border border-slate-800 bg-slate-950/70 px-3 py-2 text-sm text-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/50"
+              className={inputClass}
             >
-              <option value="b2b-lead-generation">B2B Lead Generation</option>
-              <option value="cold-calling">Cold Calling</option>
+              <option value="">Select a service…</option>
+              <option value="data-enrichment">B2B Data Extraction &amp; Intelligence</option>
               <option value="appointment-setting">Appointment Setting</option>
+              <option value="sales-consulting">Sales Consulting</option>
+              <option value="cold-calling">Cold Calling</option>
               <option value="sdr-services">SDR as a Service</option>
-              <option value="data-enrichment">Data & List Building</option>
               <option value="email-outreach">Email Outreach</option>
+              <option value="b2b-lead-generation">B2B Lead Generation</option>
               <option value="sales-outsourcing">Sales Outsourcing</option>
+              <option value="not-sure">Not sure — help me choose</option>
             </select>
-            {errors.serviceInterest && <span className="text-xs text-rose-400 mt-1 block">{errors.serviceInterest.message}</span>}
+            {errors.serviceInterest && <span className={errClass}>{errors.serviceInterest.message}</span>}
           </div>
-
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1">Company Size</label>
-            <select
-              {...register("companySize")}
-              className="flex h-10 w-full rounded-md border border-slate-800 bg-slate-950/70 px-3 py-2 text-sm text-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/50"
-            >
-              <option value="1-10">1 - 10 employees</option>
-              <option value="11-50">11 - 50 employees</option>
-              <option value="51-200">51 - 200 employees</option>
-              <option value="201-500">201 - 500 employees</option>
-              <option value="500+">500+ employees</option>
+            <Label>Target Market <span className="text-muted-foreground/60 font-normal">(optional)</span></Label>
+            <Input
+              className={inputClass}
+              placeholder="e.g. Mid-market SaaS in the US"
+              {...register("targetMarket")}
+            />
+          </div>
+        </div>
+
+        {/* Row 4: Monthly outreach + Company size */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <Label>Estimated Monthly Outreach Needs <span className="text-muted-foreground/60 font-normal">(optional)</span></Label>
+            <select {...register("monthlyOutreach")} className={inputClass}>
+              <option value="">Select range…</option>
+              <option value="under-500">Under 500 contacts / month</option>
+              <option value="500-2000">500 – 2,000 contacts / month</option>
+              <option value="2000-5000">2,000 – 5,000 contacts / month</option>
+              <option value="5000-plus">5,000+ contacts / month</option>
+              <option value="not-sure">Not sure yet</option>
+            </select>
+          </div>
+          <div>
+            <Label>Company Size <span className="text-muted-foreground/60 font-normal">(optional)</span></Label>
+            <select {...register("companySize")} className={inputClass}>
+              <option value="">Select…</option>
+              <option value="1-10">1 – 10 employees</option>
+              <option value="11-50">11 – 50 employees</option>
+              <option value="51-200">51 – 200 employees</option>
+              <option value="201-500">201 – 500 employees</option>
+              <option value="500-plus">500+ employees</option>
             </select>
           </div>
         </div>
 
+        {/* Message */}
         <div>
-          <label className="block text-xs font-semibold text-slate-300 mb-1">Company Website</label>
-          <Input placeholder="https://acme.com" {...register("website")} />
-        </div>
-
-        <div>
-          <label className="block text-xs font-semibold text-slate-300 mb-1">Outbound Goals / Message</label>
+          <Label>Business Challenge or Message <span className="text-muted-foreground/60 font-normal">(optional)</span></Label>
           <Textarea
-            rows={3}
-            placeholder="Tell us about your target accounts, ideal client profile, or current pipeline targets..."
+            rows={4}
+            className={inputClass + " h-auto resize-none py-2"}
+            placeholder="Tell us about your ideal customer profile, current pipeline situation or what you're trying to achieve in the next 90 days…"
             {...register("message")}
           />
         </div>
 
-        <div className="flex items-start gap-2 pt-2">
+        {/* Consent */}
+        <div className="flex items-start gap-2.5 pt-1">
           <input
             type="checkbox"
-            id="consent"
+            id="lead-consent"
             {...register("consent")}
-            className="mt-1 rounded bg-slate-950 border-slate-800 text-cyan-500 focus:ring-cyan-500/50"
+            className="mt-0.5 w-4 h-4 rounded bg-background border-border/80 text-amber-500 focus:ring-amber-500/50 cursor-pointer"
           />
-          <label htmlFor="consent" className="text-xs text-slate-400 leading-tight">
-            I agree to allow RevGen IQ to process my information to schedule a consultation and send sales outreach insights.
+          <label htmlFor="lead-consent" className="text-xs text-muted-foreground/80 leading-snug cursor-pointer">
+            I agree to allow RevGen IQ to process my information to arrange a consultation and send relevant sales intelligence content. You can unsubscribe at any time.
           </label>
         </div>
-        {errors.consent && <span className="text-xs text-rose-400 block">{errors.consent.message}</span>}
+        {errors.consent && <span className={errClass}>{errors.consent.message}</span>}
 
-        <Button type="submit" disabled={loading} variant="glow" size="lg" className="w-full gap-2 mt-4 text-base">
+        <Button
+          type="submit"
+          disabled={loading}
+          variant="glow"
+          size="lg"
+          className="w-full gap-2 mt-2 text-base"
+        >
           {loading ? (
             <>
               <Loader2 className="w-5 h-5 animate-spin" />
-              Processing Request...
+              Submitting…
             </>
           ) : (
             <>
-              Schedule Pipeline Audit
+              Request a Consultation
               <ArrowRight className="w-5 h-5" />
             </>
           )}
         </Button>
+
+        <p className="text-center text-xs text-slate-600 pt-1">
+          No commitment required. We respond within one business day.
+        </p>
       </form>
     </div>
   );

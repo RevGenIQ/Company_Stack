@@ -54,7 +54,7 @@ export function getStatusBadgeColor(status: string): {
 } {
   switch (status.toUpperCase()) {
     case "NEW":
-      return { bg: "bg-cyan-500/10", text: "text-cyan-400", border: "border-cyan-500/30" };
+      return { bg: "bg-amber-500/10", text: "text-amber-400", border: "border-amber-500/30" };
     case "CONTACTED":
       return { bg: "bg-blue-500/10", text: "text-blue-400", border: "border-blue-500/30" };
     case "QUALIFIED":

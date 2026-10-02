@@ -23,37 +23,37 @@ export default function ContactPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mt-8">
             <div className="lg:col-span-5 space-y-8">
-              <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-6">
-                <h3 className="text-xl font-bold text-white">Headquarters & Inquiries</h3>
+              <div className="p-8 rounded-2xl bg-card/60 border border-border space-y-6">
+                <h3 className="text-xl font-bold text-foreground">Headquarters & Inquiries</h3>
 
-                <div className="space-y-4 text-sm text-slate-300">
+                <div className="space-y-4 text-sm text-muted-foreground">
                   <div className="flex items-start gap-3">
-                    <Mail className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
+                    <Mail className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold text-white">Email Us</p>
-                      <p className="text-slate-400">hello@revgeniq.com</p>
+                      <p className="font-semibold text-foreground">Email Us</p>
+                      <p className="text-muted-foreground/80">hello@revgeniq.com</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <Phone className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
+                    <Phone className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold text-white">Call Sales Direct</p>
-                      <p className="text-slate-400">+1 (800) REV-GEN1</p>
+                      <p className="font-semibold text-foreground">Call Sales Direct</p>
+                      <p className="text-muted-foreground/80">+1 (800) REV-GEN1</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <MapPin className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
+                    <MapPin className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold text-white">San Francisco Office</p>
-                      <p className="text-slate-400">One Market Tower, Suite 1900, San Francisco, CA 94105</p>
+                      <p className="font-semibold text-foreground">San Francisco Office</p>
+                      <p className="text-muted-foreground/80">One Market Tower, Suite 1900, San Francisco, CA 94105</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-slate-800 flex items-center gap-2 text-xs text-slate-400">
-                  <ShieldCheck className="w-4 h-4 text-cyan-400" />
+                <div className="pt-4 border-t border-border flex items-center gap-2 text-xs text-muted-foreground/80">
+                  <ShieldCheck className="w-4 h-4 text-amber-400" />
                   <span>NDAs signed prior to custom account strategy disclosure.</span>
                 </div>
               </div>

@@ -23,39 +23,39 @@ export default function BookACallPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mt-8">
             <div className="lg:col-span-5 space-y-6">
-              <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-6">
-                <div className="flex items-center gap-2 text-xs font-bold text-cyan-400 uppercase tracking-wider">
+              <div className="p-8 rounded-2xl bg-card/60 border border-border space-y-6">
+                <div className="flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-wider">
                   <CalendarCheck2 className="w-4 h-4" /> What Happens On The Call
                 </div>
 
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                       1
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-white">ICP & Disqualifier Analysis</h4>
-                      <p className="text-xs text-slate-400 mt-0.5">We audit your ideal buying committee and set hard exclusion criteria.</p>
+                      <h4 className="text-sm font-bold text-foreground">ICP & Disqualifier Analysis</h4>
+                      <p className="text-xs text-muted-foreground/80 mt-0.5">We audit your ideal buying committee and set hard exclusion criteria.</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                       2
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-white">Database Verification Sample</h4>
-                      <p className="text-xs text-slate-400 mt-0.5">We show live deliverability and phone connect benchmarks for your vertical.</p>
+                      <h4 className="text-sm font-bold text-foreground">Database Verification Sample</h4>
+                      <p className="text-xs text-muted-foreground/80 mt-0.5">We show live deliverability and phone connect benchmarks for your vertical.</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                       3
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-white">Custom Meeting Projection</h4>
-                      <p className="text-xs text-slate-400 mt-0.5">Calculate projected qualified discovery calls land on your AE calendars each month.</p>
+                      <h4 className="text-sm font-bold text-foreground">Custom Meeting Projection</h4>
+                      <p className="text-xs text-muted-foreground/80 mt-0.5">Calculate projected qualified discovery calls land on your AE calendars each month.</p>
                     </div>
                   </div>
                 </div>

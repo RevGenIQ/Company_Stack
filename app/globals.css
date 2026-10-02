@@ -5,12 +5,14 @@
 /* ============================================================
    RevGen IQ — Design System
    Palette: Deep Navy · Ivory · Gold (single accent)
+   Dark Mode: Default — Deep Navy background
+   Light Mode: Clean White · Dark Navy text · Gold accent
    All values in OKLCH for perceptual uniformity.
    ============================================================ */
 
 @layer base {
   :root {
-    /* ---- Semantic Tokens (shadcn-compatible) ---- */
+    /* ---- Dark Mode Tokens (default) ---- */
     --background:     0.12 0.028 252;      /* navy-deep */
     --foreground:     0.96 0.008 90;       /* ivory */
     --card:           0.16 0.028 252;      /* navy-card */
@@ -18,7 +20,7 @@
     --popover:        0.16 0.028 252;
     --popover-foreground: 0.96 0.008 90;
     --primary:        0.75 0.15 75;        /* gold */
-    --primary-foreground: 0.11 0.028 252; /* navy-deep text on gold */
+    --primary-foreground: 0.11 0.028 252;
     --secondary:      0.20 0.028 252;      /* navy-hover */
     --secondary-foreground: 0.96 0.008 90;
     --muted:          0.20 0.028 252;
@@ -31,16 +33,51 @@
     --input:          0.22 0.025 252;
     --ring:           0.75 0.15 75;        /* gold focus ring */
     --radius: 0.5rem;
+
+    /* ---- Surface tokens ---- */
+    --surface:        oklch(0.15 0.028 252);
+    --surface-hover:  oklch(0.18 0.028 252);
+  }
+
+  .light {
+    --background:     0.98 0.004 90;       /* near-white */
+    --foreground:     0.11 0.028 252;      /* deep navy text */
+    --card:           1.0 0 0;             /* white */
+    --card-foreground: 0.11 0.028 252;
+    --popover:        1.0 0 0;
+    --popover-foreground: 0.11 0.028 252;
+    --primary:        0.65 0.14 72;        /* slightly darker gold */
+    --primary-foreground: 0.98 0.004 90;
+    --secondary:      0.94 0.008 252;      /* light blue-grey */
+    --secondary-foreground: 0.11 0.028 252;
+    --muted:          0.94 0.008 252;
+    --muted-foreground: 0.42 0.025 252;
+    --accent:         0.65 0.14 72;
+    --accent-foreground: 0.98 0.004 90;
+    --destructive:    0.55 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+    --border:         0.88 0.012 252;      /* light border */
+    --input:          0.88 0.012 252;
+    --ring:           0.65 0.14 72;
+    --radius: 0.5rem;
+
+    --surface:        oklch(0.96 0.006 252);
+    --surface-hover:  oklch(0.92 0.010 252);
   }
 }
 
 /* ---- Base Styles ---- */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: oklch(var(--background));
   color: oklch(var(--foreground));
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
   min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
@@ -48,9 +85,12 @@ body {
   color: oklch(0.98 0.005 90);
 }
 
+/* ---- Surface utility class ---- */
+.bg-surface { background-color: var(--surface); }
+
 /* ---- Glassmorphism Panel — Deep Navy + Subtle Gold Border ---- */
 .glass-panel {
-  background: oklch(0.16 0.028 252 / 0.78);
+  background: oklch(var(--card) / 0.78);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid oklch(0.75 0.15 75 / 0.14);
@@ -74,12 +114,27 @@ body {
     linear-gradient(to bottom, oklch(0.96 0.008 90 / 0.025) 1px, transparent 1px);
 }
 
+.light .bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, oklch(0.11 0.028 252 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.11 0.028 252 / 0.05) 1px, transparent 1px);
+}
+
 /* ---- Radial Gold / Navy Glow Gradient ---- */
 .bg-glow-gradient {
   background: radial-gradient(
     ellipse at 50% 0%,
     oklch(0.75 0.15 75 / 0.10) 0%,
     oklch(0.15 0.028 252 / 0.5) 55%,
+    transparent 80%
+  );
+}
+
+.light .bg-glow-gradient {
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    oklch(0.65 0.14 72 / 0.08) 0%,
+    oklch(0.96 0.006 252 / 0.5) 55%,
     transparent 80%
   );
 }
@@ -91,6 +146,18 @@ body {
     oklch(0.98 0.005 90) 0%,
     oklch(0.88 0.12 80) 45%,
     oklch(0.75 0.15 75) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.light .text-gradient {
+  background: linear-gradient(
+    135deg,
+    oklch(0.15 0.028 252) 0%,
+    oklch(0.30 0.06 252) 45%,
+    oklch(0.60 0.14 72) 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -113,6 +180,15 @@ body {
 .text-gold   { color: oklch(0.75 0.15 75); }
 .bg-gold     { background-color: oklch(0.75 0.15 75); }
 
+/* ---- Container utility ---- */
+.container-x {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
 /* ---- Scrollbar Styling ---- */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: oklch(0.14 0.028 252); }
@@ -121,6 +197,9 @@ body {
   border-radius: 99px;
 }
 ::-webkit-scrollbar-thumb:hover { background: oklch(0.75 0.15 75 / 0.5); }
+
+.light ::-webkit-scrollbar-track { background: oklch(0.94 0.008 252); }
+.light ::-webkit-scrollbar-thumb { background: oklch(0.78 0.015 252); }
 
 /* ---- TipTap Rich-Text Editor ---- */
 .ProseMirror {
@@ -134,4 +213,84 @@ body {
   float: left;
   height: 0;
   pointer-events: none;
+}
+
+/* ---- Keyframe Animations ---- */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-10px) rotate(1deg); }
+  66%       { transform: translateY(-6px) rotate(-1deg); }
+}
+
+@keyframes float-slower {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-14px) rotate(-1.5deg); }
+}
+
+@keyframes gold-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50%       { opacity: 0.75; transform: scale(1.04); }
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(0.95); box-shadow: 0 0 0 0 oklch(0.75 0.15 75 / 0.4); }
+  70%  { transform: scale(1);    box-shadow: 0 0 0 10px oklch(0.75 0.15 75 / 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 oklch(0.75 0.15 75 / 0); }
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Animation Classes ---- */
+.animate-fade-in-up    { animation: fade-in-up 0.6s ease-out both; }
+.animate-fade-up       { animation: fade-up 0.5s ease-out both; }
+.animate-float-slow    { animation: float-slow 7s ease-in-out infinite; }
+.animate-float-slower  { animation: float-slower 10s ease-in-out infinite; }
+.animate-gold-pulse    { animation: gold-pulse 4s ease-in-out infinite; }
+.animate-marquee       { animation: marquee 28s linear infinite; }
+.animate-shimmer       { animation: shimmer 2.5s linear infinite; }
+.animate-slide-down    { animation: slide-down 0.25s ease-out both; }
+
+/* ---- Animation Delays ---- */
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-500 { animation-delay: 500ms; }
+.animation-delay-600 { animation-delay: 600ms; }
+
+/* ---- Reduced motion preference ---- */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up,
+  .animate-fade-up,
+  .animate-float-slow,
+  .animate-float-slower,
+  .animate-gold-pulse,
+  .animate-marquee,
+  .animate-shimmer,
+  .animate-slide-down {
+    animation: none;
+  }
 }

@@ -56,7 +56,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
 
       <section className="py-12 bg-grid-pattern bg-glow-gradient">
         <Container size="xl">
-          <Link href="/blog" className="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-cyan-400 transition-colors mb-6">
+          <Link href="/blog" className="inline-flex items-center gap-2 text-xs font-semibold text-muted-foreground/80 hover:text-amber-400 transition-colors mb-6">
             <ArrowLeft className="w-4 h-4" /> Back to All Articles
           </Link>
 
@@ -64,23 +64,23 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
             <article className="lg:col-span-8 space-y-8">
               <div className="space-y-4">
                 {post.category && (
-                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
+                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/40">
                     {post.category.name}
                   </span>
                 )}
 
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground tracking-tight leading-tight">
                   {post.title}
                 </h1>
 
-                <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-slate-400 border-y border-slate-800 py-3">
-                  <span className="flex items-center gap-1 text-slate-200">
-                    <User className="w-4 h-4 text-cyan-400" />
+                <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-muted-foreground/80 border-y border-border py-3">
+                  <span className="flex items-center gap-1 text-foreground/90">
+                    <User className="w-4 h-4 text-amber-400" />
                     {post.author_name}
                   </span>
                   <span>•</span>
                   <span className="flex items-center gap-1">
-                    <Clock className="w-4 h-4 text-cyan-400" />
+                    <Clock className="w-4 h-4 text-amber-400" />
                     {post.reading_time_minutes} min read
                   </span>
                   <span>•</span>
@@ -89,14 +89,14 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
               </div>
 
               {post.featured_image && (
-                <div className="w-full h-80 sm:h-96 rounded-2xl overflow-hidden border border-slate-800">
+                <div className="w-full h-80 sm:h-96 rounded-2xl overflow-hidden border border-border">
                   <img src={post.featured_image} alt={post.title} className="w-full h-full object-cover" />
                 </div>
               )}
 
               {/* Rich Text Body */}
               <div
-                className="prose prose-invert max-w-none text-slate-300 leading-relaxed text-base space-y-4 font-normal"
+                className="prose prose-invert max-w-none text-muted-foreground leading-relaxed text-base space-y-4 font-normal"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             </article>

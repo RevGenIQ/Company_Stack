@@ -5,7 +5,7 @@ import { constructMetadata } from "@/lib/seo";
 import { ShieldCheck, Target, Users } from "lucide-react";
 
 export const metadata = constructMetadata({
-  title: "About RevGen IQ | Premium B2B Outbound Revenue Agency",
+  title: "About RevGen IQ",
   description: "Learn about RevGen IQ's mission, team, research methodology, and outbound revenue infrastructure.",
   canonicalUrlRelative: "/about",
 });
@@ -22,26 +22,26 @@ export default function AboutPage() {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
-              <Target className="w-10 h-10 text-cyan-400" />
-              <h3 className="text-xl font-bold text-white">Precision ICP Target</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
+            <div className="p-8 rounded-2xl bg-card/60 border border-border space-y-4">
+              <Target className="w-10 h-10 text-amber-400" />
+              <h3 className="text-xl font-bold text-foreground">Precision ICP Target</h3>
+              <p className="text-muted-foreground/80 text-sm leading-relaxed">
                 We don't rely on broad, unverified list dumps. Every account is researched, filtered by technographics and intent signals, and double-verified.
               </p>
             </div>
 
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
+            <div className="p-8 rounded-2xl bg-card/60 border border-border space-y-4">
               <Users className="w-10 h-10 text-blue-400" />
-              <h3 className="text-xl font-bold text-white">Senior Sales Craft</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
+              <h3 className="text-xl font-bold text-foreground">Senior Sales Craft</h3>
+              <p className="text-muted-foreground/80 text-sm leading-relaxed">
                 Our calling pods and SDR leads bring years of commercial B2B experience. They run intelligent conversations rather than reading robotic scripts.
               </p>
             </div>
 
-            <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
+            <div className="p-8 rounded-2xl bg-card/60 border border-border space-y-4">
               <ShieldCheck className="w-10 h-10 text-emerald-400" />
-              <h3 className="text-xl font-bold text-white">Infrastructure Health</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
+              <h3 className="text-xl font-bold text-foreground">Infrastructure Health</h3>
+              <p className="text-muted-foreground/80 text-sm leading-relaxed">
                 We manage domain isolation, email authentication (SPF, DKIM, DMARC), and deliverability monitoring to ensure 96%+ inbox placement.
               </p>
             </div>
@@ -64,13 +64,13 @@ export default function AboutPage() {
               { name: "Elena Rostova", role: "Head of Operations & Data", bio: "Specialist in B2B data enrichment, deliverability architecture, and intent signal mapping." },
               { name: "Marcus Sterling", role: "Head of SDR Execution", bio: "Managed 50+ SDR pods and conducted over 200,000 B2B calling conversations." }
             ].map((member, i) => (
-              <div key={i} className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
-                <div className="w-16 h-16 rounded-full bg-cyan-500/20 text-cyan-400 font-bold text-xl flex items-center justify-center border border-cyan-500/30">
+              <div key={i} className="p-6 rounded-2xl bg-card/60 border border-border space-y-3">
+                <div className="w-16 h-16 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl flex items-center justify-center border border-amber-500/30">
                   {member.name.charAt(0)}
                 </div>
-                <h3 className="text-xl font-bold text-white">{member.name}</h3>
-                <p className="text-cyan-400 text-xs font-semibold">{member.role}</p>
-                <p className="text-slate-400 text-sm leading-relaxed">{member.bio}</p>
+                <h3 className="text-xl font-bold text-foreground">{member.name}</h3>
+                <p className="text-amber-400 text-xs font-semibold">{member.role}</p>
+                <p className="text-muted-foreground/80 text-sm leading-relaxed">{member.bio}</p>
               </div>
             ))}
           </div>
