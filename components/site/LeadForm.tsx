@@ -10,20 +10,20 @@ import { Textarea } from "@/components/ui/textarea";
 import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 
 const leadSchema = z.object({
-  fullName:          z.string().min(2, "Please enter your full name"),
-  company:           z.string().min(2, "Please enter your company name"),
-  businessEmail:     z.string().email("Please enter a valid business email address"),
-  jobTitle:          z.string().optional(),
-  phone:             z.string().optional(),
-  website:           z.string().optional(),
-  serviceInterest:   z.string().min(1, "Please select the service most relevant to your needs"),
-  targetMarket:      z.string().optional(),
-  monthlyOutreach:   z.string().optional(),
-  companySize:       z.string().optional(),
-  message:           z.string().optional(),
-  consent:           z.boolean().refine((val) => val === true, "Your consent is required to proceed"),
+  fullName: z.string().min(2, "Please enter your full name"),
+  company: z.string().min(2, "Please enter your company name"),
+  businessEmail: z.string().email("Please enter a valid business email address"),
+  jobTitle: z.string().optional(),
+  phone: z.string().optional(),
+  website: z.string().optional(),
+  serviceInterest: z.string().min(1, "Please select the service most relevant to your needs"),
+  targetMarket: z.string().optional(),
+  monthlyOutreach: z.string().optional(),
+  companySize: z.string().optional(),
+  message: z.string().optional(),
+  consent: z.boolean().refine((val) => val === true, "Your consent is required to proceed"),
   // Anti-spam honeypot
-  hpField:           z.string().optional(),
+  hpField: z.string().optional(),
 });
 
 type LeadFormData = z.infer<typeof leadSchema>;
@@ -60,14 +60,14 @@ export function LeadForm({
     if (typeof window !== "undefined") {
       const urlParams = new URLSearchParams(window.location.search);
       setAttribution({
-        utm_source:   urlParams.get("utm_source") || "",
-        utm_medium:   urlParams.get("utm_medium") || "",
+        utm_source: urlParams.get("utm_source") || "",
+        utm_medium: urlParams.get("utm_medium") || "",
         utm_campaign: urlParams.get("utm_campaign") || "",
-        utm_term:     urlParams.get("utm_term") || "",
-        utm_content:  urlParams.get("utm_content") || "",
+        utm_term: urlParams.get("utm_term") || "",
+        utm_content: urlParams.get("utm_content") || "",
         landing_page: window.location.pathname,
-        referrer:     document.referrer || "",
-        page_url:     window.location.href,
+        referrer: document.referrer || "",
+        page_url: window.location.href,
       });
     }
   }, []);
@@ -98,10 +98,10 @@ export function LeadForm({
 
     try {
       const payload = { ...data, ...attribution };
-      const res  = await fetch("/api/lead", {
-        method:  "POST",
+      const res = await fetch("/api/lead", {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
-        body:    JSON.stringify(payload),
+        body: JSON.stringify(payload),
       });
       const json = await res.json();
 
@@ -143,7 +143,7 @@ export function LeadForm({
   );
 
   const inputClass = "flex h-10 w-full rounded-md border border-border bg-background/70 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-500/60 focus-visible:border-amber-500/40 transition-colors";
-  const errClass   = "text-xs text-rose-400 mt-1 block";
+  const errClass = "text-xs text-rose-400 mt-1 block";
 
   return (
     <div className={`p-6 sm:p-8 rounded-2xl border border-border bg-card/80 backdrop-blur-xl shadow-2xl space-y-6 ${className}`}>
@@ -168,7 +168,7 @@ export function LeadForm({
             <Label required>Full Name</Label>
             <Input
               className={inputClass}
-              placeholder="e.g. Alex Thompson"
+              placeholder="Enter Full Name"
               {...register("fullName")}
             />
             {errors.fullName && <span className={errClass}>{errors.fullName.message}</span>}
@@ -177,7 +177,7 @@ export function LeadForm({
             <Label required>Company Name</Label>
             <Input
               className={inputClass}
-              placeholder="e.g. Meridian Software Ltd"
+              placeholder="Enter Company Name"
               {...register("company")}
             />
             {errors.company && <span className={errClass}>{errors.company.message}</span>}
@@ -191,7 +191,7 @@ export function LeadForm({
             <Input
               type="email"
               className={inputClass}
-              placeholder="e.g. alex@meridian.com"
+              placeholder="Enter Business Email"
               {...register("businessEmail")}
             />
             {errors.businessEmail && <span className={errClass}>{errors.businessEmail.message}</span>}
@@ -200,7 +200,7 @@ export function LeadForm({
             <Label>Job Title <span className="text-muted-foreground/60 font-normal">(optional)</span></Label>
             <Input
               className={inputClass}
-              placeholder="e.g. VP of Sales"
+              placeholder="Enter Your Designation"
               {...register("jobTitle")}
             />
           </div>
@@ -231,7 +231,7 @@ export function LeadForm({
             <Label>Target Market <span className="text-muted-foreground/60 font-normal">(optional)</span></Label>
             <Input
               className={inputClass}
-              placeholder="e.g. Mid-market SaaS in the US"
+              placeholder="Enter Target Market"
               {...register("targetMarket")}
             />
           </div>
