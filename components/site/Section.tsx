@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Link } from "@tanstack/react-router";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -65,8 +65,8 @@ export function CtaBand({
               <h2 className="mt-4 max-w-2xl text-3xl font-semibold leading-tight md:text-5xl">{title}</h2>
               <p className="mt-4 max-w-xl text-muted-foreground">{lead}</p>
             </div>
-            <Button asChild variant="gold" size="xl">
-              <Link to="/book-a-call">
+            <Button asChild variant="secondary" size="sm">
+              <Link href="/book-a-call">
                 Book a Strategy Call <ArrowRight />
               </Link>
             </Button>

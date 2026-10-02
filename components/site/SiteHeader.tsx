@@ -11,30 +11,30 @@ import { useTheme } from "@/components/site/ThemeProvider";
 import {
   Menu, X, ArrowRight, ChevronDown,
   Database, PhoneCall, CalendarCheck, Users, Mail,
-  BarChart3, Building2, BookOpen, Info, BrainCircuit,
+  BarChart3, BrainCircuit,
   TrendingUp,
 } from "lucide-react";
 
 /* ---- Navigation Data ---- */
 const services = [
-  { href: "/services/data-enrichment",      label: "B2B Data Extraction & Intelligence", icon: Database,      desc: "Identify, extract, enrich & validate prospect data" },
-  { href: "/services/appointment-setting",  label: "Appointment Setting",                icon: CalendarCheck, desc: "Qualified meetings onto your AEs' calendars" },
-  { href: "/services/sales-consulting",     label: "Sales Consulting",                   icon: BrainCircuit,  desc: "GTM strategy, ICP definition & sales process design" },
-  { href: "/services/cold-calling",         label: "Cold Calling",                       icon: PhoneCall,     desc: "Trained B2B callers who open real conversations" },
-  { href: "/services/sdr-services",         label: "SDR as a Service",                   icon: Users,         desc: "Fully managed, ramped outbound SDR pods" },
-  { href: "/services/email-outreach",       label: "Email Outreach",                     icon: Mail,          desc: "Deliverability-first cold email programs" },
+  { href: "/services/data-enrichment", label: "B2B Data Extraction & Intelligence", icon: Database, desc: "Identify, extract, enrich & validate prospect data" },
+  { href: "/services/appointment-setting", label: "Appointment Setting", icon: CalendarCheck, desc: "Qualified meetings onto your AEs' calendars" },
+  { href: "/services/sales-consulting", label: "Sales Consulting", icon: BrainCircuit, desc: "GTM strategy, ICP definition & sales process design" },
+  { href: "/services/cold-calling", label: "Cold Calling", icon: PhoneCall, desc: "Trained B2B callers who open real conversations" },
+  { href: "/services/sdr-services", label: "SDR as a Service", icon: Users, desc: "Fully managed, ramped outbound SDR pods" },
+  { href: "/services/email-outreach", label: "Email Outreach", icon: Mail, desc: "Deliverability-first cold email programs" },
 ];
 
 const solutions = [
-  { href: "/services/b2b-lead-generation",  label: "B2B Lead Generation",   icon: TrendingUp,  desc: "End-to-end ICP targeting and qualified lead delivery" },
-  { href: "/services/sales-outsourcing",    label: "Sales Outsourcing",      icon: BarChart3,   desc: "Full-funnel outsourced revenue teams" },
+  { href: "/services/b2b-lead-generation", label: "B2B Lead Generation", icon: TrendingUp, desc: "End-to-end ICP targeting and qualified lead delivery" },
+  { href: "/services/sales-outsourcing", label: "Sales Outsourcing", icon: BarChart3, desc: "Full-funnel outsourced revenue teams" },
 ];
 
 const topNavLinks = [
-  { href: "/industries",   label: "Industries"   },
+  { href: "/industries", label: "Industries" },
   { href: "/case-studies", label: "Case Studies" },
-  { href: "/blog",         label: "Insights"     },
-  { href: "/about",        label: "About"        },
+  { href: "/blog", label: "Insights" },
+  { href: "/about", label: "About" },
 ];
 
 /* ---- Dropdown ---- */
@@ -70,11 +70,10 @@ function NavDropdown({
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen((o) => !o)}
-        className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-full transition-colors ${
-          isLight
+        className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-full transition-colors ${isLight
             ? "text-slate-700 hover:text-slate-900 hover:bg-slate-100"
             : "text-[oklch(0.80_0.012_90)] hover:text-[oklch(0.96_0.008_90)] hover:bg-[oklch(0.20_0.028_252/0.6)]"
-        }`}
+          }`}
         aria-expanded={open}
       >
         {label}
@@ -208,11 +207,10 @@ export function SiteHeader() {
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`md:hidden p-2 rounded-lg focus:outline-none transition-colors ${
-                isLight
+              className={`md:hidden p-2 rounded-lg focus:outline-none transition-colors ${isLight
                   ? "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
                   : "text-[oklch(0.65_0.018_252)] hover:text-[oklch(0.96_0.008_90)] hover:bg-[oklch(0.20_0.028_252)]"
-              }`}
+                }`}
               aria-label="Toggle Menu"
               aria-expanded={mobileMenuOpen}
             >
