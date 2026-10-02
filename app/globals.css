@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   RevGen IQ — Design System
+   Palette: Deep Navy · Ivory · Gold (single accent)
+   All values in OKLCH for perceptual uniformity.
+   ============================================================ */
+
+@layer base {
+  :root {
+    /* ---- Semantic Tokens (shadcn-compatible) ---- */
+    --background:     0.12 0.028 252;      /* navy-deep */
+    --foreground:     0.96 0.008 90;       /* ivory */
+    --card:           0.16 0.028 252;      /* navy-card */
+    --card-foreground: 0.96 0.008 90;
+    --popover:        0.16 0.028 252;
+    --popover-foreground: 0.96 0.008 90;
+    --primary:        0.75 0.15 75;        /* gold */
+    --primary-foreground: 0.11 0.028 252; /* navy-deep text on gold */
+    --secondary:      0.20 0.028 252;      /* navy-hover */
+    --secondary-foreground: 0.96 0.008 90;
+    --muted:          0.20 0.028 252;
+    --muted-foreground: 0.65 0.018 252;
+    --accent:         0.75 0.15 75;        /* gold */
+    --accent-foreground: 0.11 0.028 252;
+    --destructive:    0.55 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+    --border:         0.22 0.025 252;      /* navy-border */
+    --input:          0.22 0.025 252;
+    --ring:           0.75 0.15 75;        /* gold focus ring */
+    --radius: 0.5rem;
+  }
+}
+
+/* ---- Base Styles ---- */
+body {
+  background-color: oklch(var(--background));
+  color: oklch(var(--foreground));
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+::selection {
+  background-color: oklch(0.75 0.15 75 / 0.35);
+  color: oklch(0.98 0.005 90);
+}
+
+/* ---- Glassmorphism Panel — Deep Navy + Subtle Gold Border ---- */
+.glass-panel {
+  background: oklch(0.16 0.028 252 / 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid oklch(0.75 0.15 75 / 0.14);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-hover:hover {
+  border-color: oklch(0.75 0.15 75 / 0.45);
+  box-shadow: 0 12px 36px -10px oklch(0.75 0.15 75 / 0.22);
+  transform: translateY(-2px);
+}
+
+/* ---- Subtle Grid Background Pattern ---- */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, oklch(0.96 0.008 90 / 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.96 0.008 90 / 0.025) 1px, transparent 1px);
+}
+
+/* ---- Radial Gold / Navy Glow Gradient ---- */
+.bg-glow-gradient {
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    oklch(0.75 0.15 75 / 0.10) 0%,
+    oklch(0.15 0.028 252 / 0.5) 55%,
+    transparent 80%
+  );
+}
+
+/* ---- OKLCH Text Gradients ---- */
+.text-gradient {
+  background: linear-gradient(
+    135deg,
+    oklch(0.98 0.005 90) 0%,
+    oklch(0.88 0.12 80) 45%,
+    oklch(0.75 0.15 75) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(
+    135deg,
+    oklch(0.90 0.12 82) 0%,
+    oklch(0.75 0.15 75) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ---- Gold Highlight / Accent Utilities ---- */
+.border-gold { border-color: oklch(0.75 0.15 75 / 0.35); }
+.text-gold   { color: oklch(0.75 0.15 75); }
+.bg-gold     { background-color: oklch(0.75 0.15 75); }
+
+/* ---- Scrollbar Styling ---- */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: oklch(0.14 0.028 252); }
+::-webkit-scrollbar-thumb {
+  background: oklch(0.26 0.025 252);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover { background: oklch(0.75 0.15 75 / 0.5); }
+
+/* ---- TipTap Rich-Text Editor ---- */
+.ProseMirror {
+  outline: none;
+  min-height: 200px;
+  padding: 1rem;
+}
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: oklch(0.55 0.02 252);
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
