@@ -24,8 +24,8 @@ export function SectionHeader({
       )}
     >
       {badge && (
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 mb-4">
-          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/20 mb-4">
+          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
           {badge}
         </span>
       )}

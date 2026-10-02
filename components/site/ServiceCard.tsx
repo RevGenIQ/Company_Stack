@@ -1,7 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ServiceItem } from "@/types/database";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { ArrowRight, CheckCircle2, TrendingUp } from "lucide-react";
+import mark from "@/assets/revgen-mark.png";
 
 export function ServiceCard({ service }: { service: ServiceItem }) {
   return (
@@ -10,21 +12,24 @@ export function ServiceCard({ service }: { service: ServiceItem }) {
         <div className="flex items-center justify-between">
           {/* Gold icon badge */}
           <div
-            className="w-10 h-10 rounded-lg flex items-center justify-center font-extrabold text-sm border"
+            className="w-10 h-10 rounded-lg flex items-center justify-center border p-1.5"
             style={{
-              background:  "oklch(0.75 0.15 75 / 0.12)",
+              background: "oklch(0.75 0.15 75 / 0.12)",
               borderColor: "oklch(0.75 0.15 75 / 0.25)",
-              color:       "oklch(0.75 0.15 75)",
             }}
           >
-            R
+            <Image
+              src={mark}
+              alt="RevGen Mark"
+              className="w-full h-full object-contain"
+            />
           </div>
           {service.metric && (
             <span
               className="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-full border"
               style={{
-                color:       "oklch(0.75 0.15 75)",
-                background:  "oklch(0.75 0.15 75 / 0.10)",
+                color: "oklch(0.75 0.15 75)",
+                background: "oklch(0.75 0.15 75 / 0.10)",
                 borderColor: "oklch(0.75 0.15 75 / 0.25)",
               }}
             >

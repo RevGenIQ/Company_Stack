@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Logo } from "@/components/site/Logo";
 import {
   LayoutDashboard,
   Users,
@@ -19,16 +18,16 @@ import {
 } from "lucide-react";
 
 const navItems = [
-  { href: "/admin",             label: "Dashboard Overview", icon: LayoutDashboard },
-  { href: "/admin/leads",       label: "Lead Pipeline",      icon: Users           },
-  { href: "/admin/blog",        label: "Blog CMS",           icon: FileText        },
-  { href: "/admin/case-studies",label: "Case Studies",       icon: Briefcase       },
-  { href: "/admin/services",    label: "Services",           icon: Layers          },
-  { href: "/admin/industries",  label: "Industries",         icon: Building        },
-  { href: "/admin/testimonials",label: "Testimonials",       icon: MessageSquare   },
-  { href: "/admin/media",       label: "Media Library",      icon: ImageIcon       },
-  { href: "/admin/users",       label: "User Roles",         icon: UserCheck       },
-  { href: "/admin/settings",    label: "Settings",           icon: Settings        },
+  { href: "/admin", label: "Dashboard Overview", icon: LayoutDashboard },
+  { href: "/admin/leads", label: "Lead Pipeline", icon: Users },
+  { href: "/admin/blog", label: "Blog CMS", icon: FileText },
+  { href: "/admin/case-studies", label: "Case Studies", icon: Briefcase },
+  { href: "/admin/services", label: "Services", icon: Layers },
+  { href: "/admin/industries", label: "Industries", icon: Building },
+  { href: "/admin/testimonials", label: "Testimonials", icon: MessageSquare },
+  { href: "/admin/media", label: "Media Library", icon: ImageIcon },
+  { href: "/admin/users", label: "User Roles", icon: UserCheck },
+  { href: "/admin/settings", label: "Settings", icon: Settings },
 ];
 
 export function AdminSidebar() {
@@ -39,11 +38,10 @@ export function AdminSidebar() {
       className="w-64 flex flex-col justify-between shrink-0 min-h-screen border-r"
       style={{
         backgroundColor: "oklch(0.11 0.028 252)",
-        borderColor:     "oklch(0.20 0.025 252)",
+        borderColor: "oklch(0.20 0.025 252)",
       }}
     >
       <div className="p-6 space-y-6">
-        <Logo />
 
         <div
           className="pt-4 border-t"
@@ -72,14 +70,14 @@ export function AdminSidebar() {
                   style={
                     isActive
                       ? {
-                          background:  "oklch(0.75 0.15 75 / 0.12)",
-                          color:       "oklch(0.75 0.15 75)",
-                          border:      "1px solid oklch(0.75 0.15 75 / 0.30)",
-                          fontWeight:  600,
-                        }
+                        background: "oklch(0.75 0.15 75 / 0.12)",
+                        color: "oklch(0.75 0.15 75)",
+                        border: "1px solid oklch(0.75 0.15 75 / 0.30)",
+                        fontWeight: 600,
+                      }
                       : {
-                          color: "oklch(0.60 0.018 252)",
-                        }
+                        color: "oklch(0.60 0.018 252)",
+                      }
                   }
                   onMouseEnter={(e) => {
                     if (!isActive) {

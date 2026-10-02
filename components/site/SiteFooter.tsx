@@ -4,20 +4,20 @@ import { Logo } from "@/components/site/Logo";
 import { ArrowUpRight, Mail, MapPin, Phone, Shield, Zap } from "lucide-react";
 
 const solutions = [
-  { href: "/services/b2b-lead-generation",  label: "B2B Lead Generation"   },
-  { href: "/services/cold-calling",          label: "Cold Calling"          },
-  { href: "/services/appointment-setting",   label: "Appointment Setting"   },
-  { href: "/services/sdr-services",          label: "SDR as a Service"      },
-  { href: "/services/email-outreach",        label: "Email Outreach"        },
-  { href: "/services/sales-outsourcing",     label: "Sales Outsourcing"     },
+  { href: "/services/b2b-lead-generation", label: "B2B Lead Generation" },
+  { href: "/services/cold-calling", label: "Cold Calling" },
+  { href: "/services/appointment-setting", label: "Appointment Setting" },
+  { href: "/services/sdr-services", label: "SDR as a Service" },
+  { href: "/services/email-outreach", label: "Email Outreach" },
+  { href: "/services/sales-outsourcing", label: "Sales Outsourcing" },
 ];
 
 const company = [
-  { href: "/about",        label: "About Us"           },
-  { href: "/industries",   label: "Industries Served"  },
-  { href: "/case-studies", label: "Case Studies"       },
-  { href: "/blog",         label: "Insights & Articles"},
-  { href: "/contact",      label: "Contact Sales"      },
+  { href: "/about", label: "About Us" },
+  { href: "/industries", label: "Industries Served" },
+  { href: "/case-studies", label: "Case Studies" },
+  { href: "/blog", label: "Insights & Articles" },
+  { href: "/contact", label: "Contact Sales" },
 ];
 
 export function SiteFooter() {
@@ -26,7 +26,7 @@ export function SiteFooter() {
       className="border-t pt-16 pb-12 relative overflow-hidden"
       style={{
         backgroundColor: "oklch(0.11 0.028 252)",
-        borderColor:     "oklch(0.22 0.025 252 / 0.6)",
+        borderColor: "oklch(0.22 0.025 252 / 0.6)",
       }}
     >
       {/* Gold glow bleed from bottom */}
@@ -52,9 +52,9 @@ export function SiteFooter() {
               <span
                 className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold border"
                 style={{
-                  background:   "oklch(0.75 0.15 75 / 0.10)",
-                  color:        "oklch(0.75 0.15 75)",
-                  borderColor:  "oklch(0.75 0.15 75 / 0.25)",
+                  background: "oklch(0.75 0.15 75 / 0.10)",
+                  color: "oklch(0.75 0.15 75)",
+                  borderColor: "oklch(0.75 0.15 75 / 0.25)",
                 }}
               >
                 <Zap className="w-3.5 h-3.5" />
@@ -141,14 +141,14 @@ export function SiteFooter() {
                   className="w-4 h-4 shrink-0"
                   style={{ color: "oklch(0.75 0.15 75)" }}
                 />
-                <span>+1 (800) REV-GEN1</span>
+                <span>+91 9205500230</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <MapPin
                   className="w-4 h-4 shrink-0 mt-0.5"
                   style={{ color: "oklch(0.75 0.15 75)" }}
                 />
-                <span>One Market Tower, Suite 1900,<br />San Francisco, CA 94105</span>
+                <span>Sector 62, Noida, Uttar Pradesh, 201301</span>
               </li>
             </ul>
           </div>

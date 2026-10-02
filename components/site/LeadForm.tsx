@@ -142,10 +142,7 @@ export function LeadForm({
   return (
     <div className={`p-6 sm:p-8 rounded-2xl border border-slate-800 bg-slate-900/80 backdrop-blur-xl shadow-2xl space-y-6 ${className}`}>
       <div>
-        <div className="flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase tracking-wider mb-2">
-          <Sparkles className="w-4 h-4" />
-          <span>Growth Audit & Consultation</span>
-        </div>
+
         <h3 className="text-2xl font-extrabold text-white">{title}</h3>
         <p className="text-slate-400 text-sm mt-1">{subtitle}</p>
       </div>

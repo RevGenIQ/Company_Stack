@@ -8,16 +8,16 @@ export function OrganizationJsonLd() {
     name: SITE_NAME,
     url: SITE_URL,
     logo: `${SITE_URL}/images/logo.png`,
-    description: "Premium B2B Revenue Generation & Outbound SDR Agency",
+    description: "B2B Revenue Generation & Outbound SDR Agency",
     sameAs: [
       "https://www.linkedin.com/company/revgeniq",
       "https://twitter.com/revgeniq"
     ],
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+1-800-REV-GEN1",
-      contactType: "sales",
-      email: "hello@revgeniq.com"
+      telephone: "+919205500230",
+      contactType: "Director",
+      email: "[EMAIL_ADDRESS]"
     }
   };
 

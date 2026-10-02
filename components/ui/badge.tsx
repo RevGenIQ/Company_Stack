@@ -8,7 +8,7 @@ const badgeVariants = cva(
     variants: {
       variant: {
         default:
-          "border-cyan-500/30 bg-cyan-500/10 text-cyan-400",
+          "border-amber-500/30 bg-amber-500/10 text-amber-400",
         secondary:
           "border-slate-700 bg-slate-800 text-slate-300",
         destructive:
@@ -26,7 +26,7 @@ const badgeVariants = cva(
 
 export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {}
+  VariantProps<typeof badgeVariants> { }
 
 function Badge({ className, variant, ...props }: BadgeProps) {
   return (

@@ -17,16 +17,16 @@ export function AdminHeader() {
       <div className="flex items-center gap-4">
         <button className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-900 relative">
           <Bell className="w-4 h-4" />
-          <span className="w-2 h-2 rounded-full bg-cyan-400 absolute top-1.5 right-1.5 animate-ping" />
+          <span className="w-2 h-2 rounded-full bg-amber-400 absolute top-1.5 right-1.5 animate-ping" />
         </button>
 
         <div className="flex items-center gap-2 pl-4 border-l border-slate-800">
-          <div className="w-8 h-8 rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 flex items-center justify-center font-bold text-xs">
-            AD
+          <div className="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center font-bold text-xs">
+            Welcome
           </div>
           <div className="hidden sm:block text-left text-xs">
-            <p className="font-bold text-white">Admin User</p>
-            <p className="text-slate-500 text-[10px]">Lead Architect</p>
+            <p className="font-bold text-white">Sir</p>
+            <p className="text-slate-500 text-[10px]">Admin</p>
           </div>
         </div>
       </div>

@@ -47,11 +47,11 @@ export function PipelineVisual() {
   return (
     <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-6 sm:p-8 backdrop-blur-xl shadow-2xl relative overflow-hidden">
       {/* Background glow */}
-      <div className="absolute -top-24 -right-24 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-24 -right-24 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-800/80">
         <div>
-          <span className="text-cyan-400 font-semibold text-xs uppercase tracking-wider">Architecture Overview</span>
+          <span className="text-amber-400 font-semibold text-xs uppercase tracking-wider">Architecture Overview</span>
           <h3 className="text-2xl font-bold text-white mt-1">The RevGen Outbound Pipeline Architecture</h3>
         </div>
         <div className="flex items-center gap-2 text-xs text-slate-400">
@@ -69,17 +69,16 @@ export function PipelineVisual() {
             <button
               key={s.step}
               onClick={() => setActiveStep(s.step)}
-              className={`p-3 rounded-xl border text-left transition-all duration-300 flex flex-col justify-between ${
-                isActive
-                  ? "border-cyan-500 bg-cyan-500/10 shadow-[0_0_20px_rgba(6,182,212,0.2)] text-white"
-                  : "border-slate-800 bg-slate-950/40 text-slate-400 hover:border-slate-700 hover:text-slate-200"
-              }`}
+              className={`p-3 rounded-xl border text-left transition-all duration-300 flex flex-col justify-between ${isActive
+                ? "border-amber-500 bg-amber-500/10 shadow-[0_0_20px_rgba(6,182,212,0.2)] text-white"
+                : "border-slate-800 bg-slate-950/40 text-slate-400 hover:border-slate-700 hover:text-slate-200"
+                }`}
             >
               <div className="flex items-center justify-between mb-2">
-                <span className={`text-xs font-bold ${isActive ? "text-cyan-400" : "text-slate-500"}`}>
+                <span className={`text-xs font-bold ${isActive ? "text-amber-400" : "text-slate-500"}`}>
                   0{s.step}
                 </span>
-                <Icon className={`w-4 h-4 ${isActive ? "text-cyan-400" : "text-slate-500"}`} />
+                <Icon className={`w-4 h-4 ${isActive ? "text-amber-400" : "text-slate-500"}`} />
               </div>
               <p className="text-xs font-semibold leading-snug">{s.title}</p>
             </button>
@@ -91,7 +90,7 @@ export function PipelineVisual() {
       {steps.find((s) => s.step === activeStep) && (
         <div className="p-6 rounded-xl bg-slate-950/80 border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div className="space-y-2 max-w-xl">
-            <div className="inline-flex items-center gap-2 text-xs font-bold text-cyan-400 uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-wider">
               <CheckCircle2 className="w-4 h-4" />
               <span>Phase 0{activeStep} Strategy</span>
             </div>
@@ -105,7 +104,7 @@ export function PipelineVisual() {
 
           <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 shrink-0 text-center sm:text-right w-full sm:w-auto">
             <span className="text-xs text-slate-400 block font-medium">Key Performance Indicator</span>
-            <span className="text-2xl font-extrabold text-cyan-400 block mt-1">
+            <span className="text-2xl font-extrabold text-amber-400 block mt-1">
               {steps[activeStep - 1]?.metric}
             </span>
           </div>
